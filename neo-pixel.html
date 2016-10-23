@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>neo-pixel</title>
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="bower_components/polymer/polymer.html">
+        <script src="util.js"></script>
+    </head>
+    <body>
+        <dom-module id="neo-pixel">
+            <template>
+                <style>
+                    :host,
+                    #container {
+                        width: 20px;
+                        height: 20px;
+                    }
+                </style>
+                <div id="container">
+                    <svg viewBox="0 0 20 20">
+                        <circle id="led" cx="10" cy="10" r="10"/>
+                    </svg>
+                </div>
+            </template>
+            <script src="neo-pixel.js"></script>
+        </dom-module>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>pendulum-waves</title>
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="bower_components/polymer/polymer.html">
+        <link rel="import" href="neo-pixel.html">
+        <script src="util.js"></script>
+    </head>
+    <body>
+        <dom-module id="pendulum-waves">
+            <template>
+                <style>
+                    #container {
+                        width: 300px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                </style>
+                <div id="container">
+                    <div>
+                        <template is="dom-repeat" items="[[stripSpectrum]]">
+                            <neo-pixel red="[[item.red]]" green="[[item.green]]" blue="[[item.blue]]"> </template>
+                    </div>
+                    <div>
+                        <template is="dom-repeat" items="[[stripMonochrome]]">
+                            <neo-pixel red="[[item.red]]" green="[[item.green]]" blue="[[item.blue]]">
+                        </template>
+                    </div>
+                    <div>
+                        <template is="dom-repeat" items="[[stripPhased]]">
+                            <neo-pixel red="[[item.red]]" green="[[item.green]]" blue="[[item.blue]]">
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <script src="pendulum-waves.js"></script>
+        </dom-module>
+    </body>
+</html>
