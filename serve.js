@@ -1,16 +1,18 @@
-var StaticServer = require('static-server');
+const StaticServer = require('static-server');
 
-var server = new StaticServer({
-  rootPath: '.',
-  name: 'pendulum-waves',
-  port: 8080,
-  cors: '*',
-  followSymlink: true,
+const port = 8090;
+
+const server = new StaticServer({
+    rootPath: '.',
+    name: 'pendulum-waves',
+    port: port,
+    cors: '*',
+    followSymlink: true,
 });
 
-server.start(function () {
-  console.log('Server listening to', server.port);
-  console.log('');
-  console.log('Browse to http://localhost:8080');
+server.start(() => {
+   console.log('Server listening to', server.port);
+   console.log('');
+   console.log(`Browse to http://localhost:${port}`);
 });
 

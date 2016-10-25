@@ -12,7 +12,7 @@
 
         let factor;
         let red;
-        let green
+        let green;
         let blue;
 
         if (wavelength >= 380 && wavelength < 440) {
@@ -57,15 +57,15 @@
             factor = 0.0;
         }
 
-        rgb = new Array();
+        const rgb = new Array();
 
         // Don't want 0^x = 1 for x <> 0
-        rgb[0] = red == 0.0 ? 0 : Math.round(intensityMax * Math.pow(red * factor, gamma));
-        rgb[1] = green == 0.0 ? 0 : Math.round(intensityMax * Math.pow(green * factor, gamma));
-        rgb[2] = blue == 0.0 ? 0 : Math.round(intensityMax * Math.pow(blue * factor, gamma));
+        rgb[0] = red === 0.0 ? 0 : Math.round(intensityMax * Math.pow(red * factor, gamma));
+        rgb[1] = green === 0.0 ? 0 : Math.round(intensityMax * Math.pow(green * factor, gamma));
+        rgb[2] = blue === 0.0 ? 0 : Math.round(intensityMax * Math.pow(blue * factor, gamma));
 
         return rgb;
-    }
+    };
 
     const decimal2HexPadded = (number) => {
         let hexNumber = (+number).toString(16);
@@ -73,7 +73,7 @@
             hexNumber = '0' + hexNumber;
         }
         return hexNumber;
-    }
+    };
 
     const getSpectrumGradient = (value) => {
         if (value < 0 || value > 1) {
@@ -81,7 +81,7 @@
         }
 
         const rgb = waveLengthToRGB(380 + 401 * value);
-        const webColorValues = rgb.map(value => decimal2HexPadded(Math.floor(value)));
+        const webColorValues = rgb.map((colorValue) => decimal2HexPadded(Math.floor(colorValue)));
         const webColor = '#' + webColorValues.join('');
         return webColor;
     };

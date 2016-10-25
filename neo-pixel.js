@@ -20,7 +20,7 @@
         ],
         _colorUpdated: function (red, green, blue) {
             const rgb = [red, green, blue];
-            const webColorValues = rgb.map(value => decimal2HexPadded(Math.floor(value)));
+            const webColorValues = rgb.map((colorValue) => window.decimal2HexPadded(Math.floor(colorValue)));
             const webColor = '#' + webColorValues.join('');
             this.$.led.style.fill = webColor;
         },

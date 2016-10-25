@@ -43,14 +43,14 @@
         attached: function () {
             setInterval(() => {
                 this.stripSpectrum = this.stripSpectrum.map((value, index) => {
-                    const step = index * 0.005 + 0.01
+                    const step = index * 0.005 + 0.01;
                     if (value.position >= 2 * Math.PI) {
-                        value.position = 0;
+                        value.position = value.position - 2 * Math.PI;
                     }
                     const newValue = {};
                     newValue.position = value.position + step;
                     const normalized = (Math.sin(newValue.position) + 1) / 2;
-                    const rgb = waveLengthToRGB(380 + 401 * normalized);
+                    const rgb = window.waveLengthToRGB(380 + 401 * normalized);
                     newValue.red = rgb[0];
                     newValue.green = rgb[1];
                     newValue.blue = rgb[2];
@@ -58,9 +58,9 @@
                 });
 
                 this.stripMonochrome = this.stripMonochrome.map((value, index) => {
-                    const step = index * 0.010 + 0.02
+                    const step = index * 0.010 + 0.02;
                     if (value.position >= 2 * Math.PI) {
-                        value.position = 0;
+                        value.position = value.position - 2 * Math.PI;
                     }
                     const newValue = {};
                     newValue.position = value.position + step;
@@ -73,16 +73,16 @@
 
                 this.stripPhased = this.stripPhased.map((value, index) => {
                     const step = index * 0.010 + 0.02;
-                    newValue = {};
+                    const newValue = {};
                     newValue.positions = value.positions.map((position) => {
                         let newPosition;
                         if (position >= 2 * Math.PI) {
-                            newPosition = 0;
+                            newPosition = position - 2 * Math.PI;
                         } else  {
                             newPosition = position;
                         }
-                        position = position + step;
-                        return position;
+                        newPosition = newPosition + step;
+                        return newPosition;
                     });
                     const redNormalized = (Math.sin(newValue.positions[0]) + 1) / 2;
                     const greenNormalized = (Math.sin(newValue.positions[1]) + 1) / 2;
